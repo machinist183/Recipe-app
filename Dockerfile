@@ -10,7 +10,7 @@ EXPOSE 8000
 ARG DEV=false
 
 RUN apk add --upgrade --no-cache postgresql-client && \
-    apk add --upgrade --no-cache --virtual .temp-build-deps s\
+    apk add --upgrade --no-cache --virtual .temp-build-deps \
         build-base postgresql-dev musl-dev 
 
 RUN pip install -r /tmp/requirements.txt
