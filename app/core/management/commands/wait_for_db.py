@@ -14,7 +14,13 @@ class Command(BaseCommand):
                 self.check(databases=['default'])
                 db_up = True
                 self.stdout.write(self.style.SUCCESS("Connected to Database"))
-            except(OperationalError , Psycopg2OpError):
-                self.stdout.write("Failed to connect : Retrying after 1 sec ...")
+            except Psycopg2OpError as e :
+                self.stdout.write(f" {e} : Failed to connect : Retrying after 1 sec ...")
+                self.stdout.write("Psycopg2 Error")
                 time.sleep(1)
+            except OperationalError as e :
+                self.stdout.write(f" {e} : Failed to connect : Retrying after 1 sec ...")
+                self.stdout.write("Operational Error")
+                time.sleep(1)
+           
                 
