@@ -15,8 +15,8 @@ services:
               python manage.py migrate &&
               python manage.py runserver 0.0.0.0:8000"
     environment:
-      - DB_HOST=35.238.89.98
-      - DB_NAME=devdb
+      - DB_HOST=db
+      - DB_NAME=mydb
       - DB_USER=ashish
       - DB_PASS=Ashish@2022
     depends_on:
@@ -27,7 +27,7 @@ services:
     volumes:
       - dev-db-data:/var/lib/postgresql/data
     environment:
-      - POSTGRES_DB=devdb
+      - POSTGRES_DB=mydb
       - POSTGRES_USER=ashish
       - POSTGRES_PASSWORD=Ashish@2022
     ports:
