@@ -4,7 +4,7 @@ LABEL maintainer="ashishkarhale"
 ENV PYTHONUNBUFFERED 1
 
 RUN apk add --upgrade --no-cache postgresql-client && \
-    apk add --upgrade --no-cache --virtual .temp-build-deps \
+    apk add --upgrade --no-cache --virtual .temp-build-dir \
         build-base postgresql-dev musl-dev 
 
 COPY ./requirements.txt ./tmp/requirements.txt
@@ -19,7 +19,7 @@ RUN if [ $DEV=true ];\
         then pip install -r /tmp/requirements.dev.txt; \
     fi 
 RUN rm -rf /tmp 
-RUN apk del .temp-build-deps
+RUN apk del .temp-build-dir
     
 RUN adduser \
         --disabled-password\
